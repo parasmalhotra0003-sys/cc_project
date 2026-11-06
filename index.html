@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Local Community Noticeboard — announcements, events, services and opportunities in your neighborhood." />
+  <title>NeighbourHub | Local Community Noticeboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">N</span><span>Neighbour<span class="brand-accent">Hub</span></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#notices">Notices</a><a href="#events">Events</a><a href="#about">About</a>
+    </nav>
+    <button class="btn btn-primary" id="openPost">＋ Post a notice</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse"></span> YOUR NEIGHBOURHOOD, CONNECTED</div>
+        <h1>Good things happen<br><span>when we connect.</span></h1>
+        <p>Discover what’s happening around you. Share local updates, find community events, and support people nearby.</p>
+        <div class="hero-actions"><a class="btn btn-primary btn-lg" href="#notices">Explore notices <span>↘</span></a><button class="btn btn-light btn-lg" id="heroPost">Share an update</button></div>
+        <div class="hero-stats"><div><strong id="noticeCount">08</strong><small>Community posts</small></div><div><strong>06</strong><small>Upcoming events</small></div><div><strong>1 place</strong><small>Stronger together</small></div></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a connected community">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="sun"></div><div class="house house-a"><i></i></div><div class="house house-b"><i></i></div><div class="house house-c"><i></i></div>
+        <div class="tree tree-a"><b></b><i></i></div><div class="tree tree-b"><b></b><i></i></div>
+        <div class="path"></div><div class="art-label"><span>✦</span> A little closer, every day</div>
+      </div>
+    </section>
+
+    <section class="section" id="notices">
+      <div class="section-heading"><div><div class="eyebrow">THE COMMUNITY BOARD</div><h2>What’s happening nearby?</h2><p>Useful updates from people in your neighbourhood.</p></div><span class="live-pill">● Community feed</span></div>
+      <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Search notices, events, services…" /></div><div class="filters" id="filters"><button class="filter active" data-category="All">All posts</button><button class="filter" data-category="Events">Events</button><button class="filter" data-category="Services">Services</button><button class="filter" data-category="Announcements">Announcements</button><button class="filter" data-category="Lost & Found">Lost &amp; found</button></div></div>
+      <div class="notice-grid" id="noticeGrid"></div>
+      <div class="empty-state hidden" id="emptyState">No notices match your search. Try another keyword or category.</div>
+      <div class="center"><button class="btn btn-outline" id="loadMore">View all notices <span>→</span></button></div>
+    </section>
+
+    <section class="event-band" id="events"><div><div class="eyebrow">MARK YOUR CALENDAR</div><h2>Meet your neighbours<br>in real life.</h2><p>Small moments make a great community. Find a local gathering and join in.</p><button class="btn btn-white" id="eventPost">＋ Add an event</button></div><div class="event-cards"><article class="event-card"><div class="event-date"><b>16</b><span>NOV</span></div><div><span class="event-type">COMMUNITY</span><h3>Neighbourhood clean-up</h3><p>Central Park · 9:00 AM</p></div><span class="event-arrow">↗</span></article><article class="event-card"><div class="event-date lavender"><b>21</b><span>NOV</span></div><div><span class="event-type">CULTURE</span><h3>Open-mic evening</h3><p>Community Hall · 6:30 PM</p></div><span class="event-arrow">↗</span></article><article class="event-card"><div class="event-date peach"><b>28</b><span>NOV</span></div><div><span class="event-type">FAMILY</span><h3>Weekend book exchange</h3><p>Library Garden · 11:00 AM</p></div><span class="event-arrow">↗</span></article></div></section>
+
+    <section class="about section" id="about"><div class="about-icon">✳</div><div><div class="eyebrow">BUILT FOR EVERYONE</div><h2>A noticeboard with a<br>neighbourly heart.</h2><p>NeighbourHub brings the everyday life of a local community into one friendly space. Share information, discover opportunities, and make it easier to look out for one another.</p></div><div class="about-points"><div><span>01</span><b>Local-first</b><small>Relevant updates, close to home.</small></div><div><span>02</span><b>Simple to use</b><small>Clear, accessible and welcoming.</small></div><div><span>03</span><b>Community-powered</b><small>Everyone can contribute.</small></div></div></section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">N</span><span>Neighbour<span class="brand-accent">Hub</span></span></a><p>Made for neighbours, by neighbours.</p><span>© 2026 NeighbourHub · Community Noticeboard</span></footer>
+
+  <dialog id="postDialog"><form method="dialog" id="noticeForm"><div class="dialog-head"><div><div class="eyebrow">COMMUNITY CONTRIBUTION</div><h2>Post a notice</h2></div><button class="close" aria-label="Close">×</button></div><p class="dialog-copy">Share something helpful with your neighbourhood.</p>
+    <label>Notice title<input name="title" required maxlength="75" placeholder="e.g. Free books available" /></label>
+    <label>Category<select name="category"><option>Announcements</option><option>Events</option><option>Services</option><option>Lost & Found</option></select></label>
+    <label>Details<textarea name="description" required maxlength="350" rows="4" placeholder="Tell the community a little more…"></textarea></label>
+    <label>Your name<input name="author" required maxlength="35" placeholder="First name or community name" /></label>
+    <label>Location (optional)<input name="location" maxlength="50" placeholder="e.g. Central Park" /></label>
+    <div class="form-note">Demo mode: posts are saved in this browser only (local storage).</div><button class="btn btn-primary btn-lg full" type="submit">Publish notice ↗</button>
+  </form></dialog>
+  <div class="toast" id="toast">Notice published successfully!</div>
+  <script src="script.js"></script>
+</body>
+</html>
